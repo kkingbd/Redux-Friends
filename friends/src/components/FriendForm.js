@@ -18,8 +18,9 @@ class FriendForm extends React.Component {
       });
     }
     submitHandler = e => {
-      e.preventDefault();
-      this.props.addFriend(this.state);
+        const { name, age, email } = this.state;
+        this.props.addNewFriend({ name, age, email });
+        this.setState({ name: '', age: '', email: '' });
     };
     render(){
         return(
@@ -57,4 +58,4 @@ class FriendForm extends React.Component {
           addNewFriend: state.addNewFriend
         }
       }
-      export default connect(mapStateToProps, { addFriend })(FriendForm)
+export default connect(mapStateToProps, { addFriend })(FriendForm)
