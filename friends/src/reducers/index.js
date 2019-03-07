@@ -5,7 +5,7 @@ const initialState = {
         error: null,
         fetching: false
 }
-export default function friendReducer(state = initialState, action) {
+export default function friendsReducer(state = initialState, action) {
     switch (action.type) {
 
         case FETCHING:
