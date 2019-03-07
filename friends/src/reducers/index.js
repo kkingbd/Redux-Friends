@@ -1,41 +1,37 @@
-import { FETCHING, UPDATING, DELETING, SUCCESS, FAILURE, ADDING } from '../actions';
+import { FETCHING, SUCCESS, ERROR , ADD_ERROR ,ADD_FRIEND, ADD_SUCCESS } from '../actions';
 
-const initialState  ={
-    friends :   [],
-    fetching:   false,
-    updating:   false,
-    deleting:   false,
-    adding  :   false,
-    failed  :   false
+const initialState = {
+        friends: [],
+        error: null,
+        fetching: false
 }
-
-export default function reduce(state = initialState, action) {
+export default function friendReducer(state = initialState, action) {
     switch (action.type) {
 
         case FETCHING:
           return {...state, fetching: true}
-    
-        case UPDATING:
-          return {...state, updating: true}
-    
-        case DELETING:
-          return {...state, deleting: true}
-    
-        case ADDING:
-          return {...state, adding: true}
-    
+
         case SUCCESS:
           return {
+            ...state,
+            error : null,
             friends: action.payload,
-            fetching: true,
-            updating: true,
-            deleting: true,
-            adding: true,
-            failed: false
+            fetching: false
           }
-
-        case FAILURE :
-          return { ...state, failed: true }
+        case ERROR :
+          return { ...state, error: action.payload, fetching: false }
+    
+        case ADD_SUCCESS:
+          return {...state, error: null, friends: action.payload}
+    
+        case ADD_FRIEND:
+          return {...state, adding: true}
+    
+        case ADD_ERROR:
+          return {
+              ...state, 
+              error: action.payload
+          }
 
         default:
           return state;

@@ -5,11 +5,13 @@ export const UPDATING = 'UPDATING';
 export const DELETING = 'DELETING';
 export const SUCCESS = 'SUCCESS';
 export const FAILURE = 'FAILURE';
+export const UPDATE_FORM = 'UPDATE_FORM';
+
 
 export const fetchFriends = () => dispatch =>{
     dispatch({type: FETCHING});
     axios
-        .get('http://localhost:5000')
+        .get('http://localhost:5000/api/friends/')
         .then(res => dispatch({
             type: SUCCESS,
             PAYLOAD: res.data
@@ -22,7 +24,7 @@ export const fetchFriends = () => dispatch =>{
 export const addFriend = friend => dispatch => {
     dispatch({type: ADDING});
     axios
-        .post(`http://localhost:5000/`, friend)
+        .post(`http://localhost:5000/api/friends`, friend)
         .then(res => dispatch({
             type: SUCCESS,
             payload: res.data
@@ -35,7 +37,7 @@ export const addFriend = friend => dispatch => {
 export const updateFriend = friend=> dispatch =>{
     dispatch({type: UPDATING});
     axios
-        .put (`http://localhost:5000/${newFriend.id}`, newFriend)
+        .put (`http://localhost:5000/api/${friend.id}`, friend)
         .then(res => dispatch({
             type: SUCCESS,
             payload: res.data
@@ -45,11 +47,16 @@ export const updateFriend = friend=> dispatch =>{
             payload: err
         }));
 }
+export const setFormToUpdate = friend => {
+    return {
+      type: UPDATE_FORM,
+      payload: friend
+}
 
 export const deleteFriend = friend => dispatch => {
     dispatch({type: DELETING});
     axios
-        .delete(`http://localhost:5000/${friend.id}`)
+        .delete(`http://localhost:5000/api/${friend.id}`)
         .then(res => dispatch({
             type: SUCCESS,
             payload: res.data
