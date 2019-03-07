@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import { FriendListView } from './views';
 import  FriendForm  from './components/FriendForm';
 class App extends Component {
@@ -9,7 +8,7 @@ class App extends Component {
 
           <FriendListView />
           <FriendForm />
-          
+
       </div>
     );
   }

@@ -9,7 +9,7 @@ import friendsReducer from './reducers';
 const store = createStore(friendsReducer, applyMiddleware(thunk))
   
 ReactDOM.render(
-        <Provider>
+        <Provider store ={store}>
             <App />
         </Provider>, 
 

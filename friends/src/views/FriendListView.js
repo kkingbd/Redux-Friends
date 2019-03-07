@@ -14,14 +14,13 @@ class FriendListView extends React.Component{
   render(){
     return(
     <div>
-      {this.props.isFetching ? <h1> Loading .... List </h1>: <h2> My Friends List </h2>}
+      {this.props.isFetching ? <h1> Loading ... </h1>: <h2> My Friends List </h2>}
       <FriendList friends ={this.props.friends} />
     </div>
     )
   }
 }
 function mapStateToProps(state) {
-  console.log(state.friends)
   return{
     friends: state.friends,
     isFetching: state.fetching

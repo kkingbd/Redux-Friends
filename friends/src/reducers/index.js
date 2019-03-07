@@ -5,7 +5,7 @@ const initialState = {
         error: null,
         fetching: false
 }
-export default function friendsReducer(state = initialState, action) {
+const friendsReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case FETCHING:
@@ -37,5 +37,7 @@ export default function friendsReducer(state = initialState, action) {
           return state;
     }
 }
+
+export default friendsReducer;
 
     

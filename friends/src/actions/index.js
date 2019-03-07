@@ -10,7 +10,7 @@ export const ADD_ERROR = 'ADD_ERROR';
 export const fetchFriends = () => dispatch =>{
     dispatch({type: FETCHING});
     axios
-        .get('http://localhost:5000/api/friends/')
+        .get('http://localhost:5000/api/friends')
         .then(res => dispatch({
             type: ADD_SUCCESS,
             PAYLOAD: res.data
@@ -23,7 +23,7 @@ export const fetchFriends = () => dispatch =>{
 export const addFriend = friend => dispatch => {
     dispatch({type: ADD_FRIEND});
     axios
-        .post(`http://localhost:5000/api/friends`, friend)
+        .post('http://localhost:5000/api/friends', friend)
         .then(res => dispatch({
             type: SUCCESS,
             payload: res.data
